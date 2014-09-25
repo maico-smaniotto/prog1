@@ -1,3 +1,5 @@
+import java.util.*;
+
 class Escopo {
 	private String[] comandos;
 	private ArrayList<Variavel> vars;
