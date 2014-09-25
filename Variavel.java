@@ -8,13 +8,13 @@ class Variavel {
 	protected void setTipo(char t) {
 		this.tipo = t;
 	}
-	protected char getTipo () {
+	public char getTipo () {
 		return this.tipo;
 	}
 	protected void setNome(String n) {
 		this.nome = new String(n);
 	}
-	protected String getNome () {
+	public String getNome () {
 		return this.nome;
 	}
 }

@@ -11,7 +11,7 @@ class Flutuante extends Variavel {
 	
 	public Flutuante (String n) {
 		this.setTipo ('F');
-		this.setNome = n;
+		this.setNome(n);
 	}
 
 }
