@@ -1,8 +1,6 @@
 class Imprimir{
 	
 	public Imprimir (String I[]){
-		I[] = funcao_Identifica_Linha(I[]);           //função a ser criada, que espero, ESPERO, que retorne apenas o que vai ser impresso,
-													// se não, vou ter que ver disso kkk e essa parte não esta bem pronta tbm
 		private int a=0;
 		while(a<I.length){                                          // vai rodar o While enquanto o a não for maior que o tamanho do vetor
 			if(I[a] == ' " '){                                		//Testa se aquela parte do vetor contem aspas 
@@ -22,6 +20,13 @@ class Imprimir{
 			}
 		}
 	}
+	
+	public Imprimir_Linha(String I[]){                       //Função igual a imprimir, mas que imprime e da um /n no final
+		this.imprimir(I[]);									//chama a outra função, pois faz a mesma coisa
+		system.out.print(\n);								// da o \n
+	}
+	
+}
 	
 	
 	//chegando aqui, espero que ele tenha impresso TUDO o que deveria ser impresso. Não haverá caractere especial fora das aspas né? como &, %, @ e etc etc?
