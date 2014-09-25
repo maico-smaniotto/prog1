@@ -1,11 +1,11 @@
 class Caractere extends Variavel {
-	private double valor;
+	private String valor;
 	
-	public void setValor (double v) {
+	public void setValor (String v) {
 		this.valor = v;
 	}
 	
-	public double getValor () {
+	public String getValor () {
 		return this.valor;
 	}
 	
