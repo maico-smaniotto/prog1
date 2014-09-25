@@ -1,10 +1,6 @@
 class Inteiro extends Variavel {
 	private int valor;
 	
-	public Inteiro() {
-		this.setTipo('I');
-	}
-	
 	public void setValor (int v) {
 		this.valor = v;
 	}
@@ -14,7 +10,7 @@ class Inteiro extends Variavel {
 	}
 	
 	public Inteiro (String n) {
-		this.setTipo ('i');
+		this.setTipo ('I');
 		this.setNome = n;
 	}
 }
