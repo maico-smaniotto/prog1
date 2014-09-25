@@ -8,5 +8,10 @@ class Caractere extends Variavel {
 	public double getValor () {
 		return this.valor;
 	}
+	
+	public Caractere (String n) {
+		this.setTipo ('c');
+		this.setNome = n;
+	}
 
 }

@@ -8,5 +8,10 @@ class Flutuante extends Variavel {
 	public double getValor () {
 		return this.valor;
 	}
+	
+	public Flutuante (String n) {
+		this.setTipo ('f');
+		this.setNome = n;
+	}
 
 }

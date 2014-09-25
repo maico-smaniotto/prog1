@@ -8,5 +8,9 @@ class Inteiro extends Variavel {
 	public int getValor () {
 		return this.valor;
 	}
-
+	
+	public Inteiro (String n) {
+		this.setTipo ('i');
+		this.setNome = n;
+	}
 }
