@@ -11,7 +11,7 @@ class Caractere extends Variavel {
 	
 	public Caractere (String n) {
 		this.setTipo ('C');
-		this.setNome = n;
+		this.setNome(n);
 	}
 
 }
