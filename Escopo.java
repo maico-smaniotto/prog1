@@ -1,7 +1,7 @@
 import java.util.*;
 
 class Escopo {
-	private String[] comandos, buffer, instruct;
+	private String comandos, buffer, instruct;
 	private ArrayList<Variavel> vars;
 	private int i, j, h, l, blocos;
 	
@@ -15,8 +15,8 @@ class Escopo {
 	
 	public Escopo(String[] comandos, ArrayList<Variavel> variaveis) {
 		this.comandos = comandos;
-		buffer = new String[1000];
-		instruct = new String[50];
+		//buffer = new String();
+		//instruct = new String();
 		
 		this.vars = new ArrayList<Variavel>(); // Funciona como um array, mas tem método add() para adicionar itens
 		for (int i = 0; i < variaveis.size(); i++) {
