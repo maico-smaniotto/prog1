@@ -5,12 +5,8 @@ class Escopo {
 	private ArrayList<Variavel> vars;
 	private int i, j, h, l, blocos;
 	
-	private boolean FimComando (char c) {
-		return (c != ';'  || c != '{');
-	}
-	
-	private boolean AvaliaCondicao(String c) {
-	
+	private boolean fimComando (char c) {
+		return (c != ';' || c != '{');
 	}
 	
 	public Escopo(String comandos, ArrayList<Variavel> variaveis) {
@@ -23,20 +19,67 @@ class Escopo {
 		processa(); // ver se não é melhor chamar este método de fora
 	}
 	
-	private void processa() {
+	private void processa() throws IllegalArgumentException {
 		buffer = new String();
 		instruct = new String();
 	
 		for (i = 0; i < this.comandos.length(); i++) {
 			j = 0;
 			buffer = buffer + comandos.charAt(i+j);
-			while (FimComando(buffer.charAt(j)))  { //aqui alimentamos o buffer até achar um fim de comando
+			while (fimComando(buffer.charAt(j)))  { //aqui alimentamos o buffer até achar um fim de comando
 				j++;
 				buffer = buffer + comandos.charAt(i+j);
 			}
 			
+			//////////////////////////////////////////
+			//////////////////////////////////////////
+			String[] tokens = buffer.split(" +|\t+|\n+");
+
+			// tratamento da declaração de variáveis e funções
+			// falta verificar se as posições do vetor existem antes de tentar acessá-las
+			if (tokens[0].equals("var")) {
+				if (tipoValido(tokens[1])) {
+					if (nomeValido(tokens[2])) {
+						if (tokens[3].equals(":=")) {
+							// declaração com atribuição, verifica se o valor que está atribuindo corresponde ao tipo declarado
+							if (valorValido(tokens[1], tokens[4])) {
+								// declara passando o escopo atual, tipo, nome e valor
+								declaraVariavel(this, tokens[1], tokens[2], tokens[4]);
+							} else {
+								throw new IllegalArgumentException("O valor " + tokens[4]) + " não é válido para a variável " + tokens[2] + " do tipo " + tokens[1]);
+							}
+						} else {
+							declaraVariavel(this, tokens[0], tokens[2], "");
+							if (tokens[4].equals(",") {
+								// essa parte se vamos permitir declaração de múltiplas variáveis separadas por vírgula
+							} else if (! tokens[4].equals(";")) {
+								throw new IllegalArgumentException("Símbolo " + tokens[4] + " inválido. Esperado , ou ;");
+							}
+						}
+					} else {
+						throw new IllegalArgumentException("Nome de variável inválido: " + tokens[2]);
+					}
+				} else {
+					throw new IllegalArgumentException("Tipo de variável inválido: " + tokens[1]);
+				}
+			} else if (tokens[0].equals("func")) {
+				if (tipoValido(tokens[1])) {
+					if (nomeValido(tokens[2])) {
+						// declara a função
+					} else {
+						throw new IllegalArgumentException("Nome de função inválido: " + tokens[2]);
+					}
+				} else {
+					throw new IllegalArgumentException("Tipo de função inválido: " + tokens[j + 1]);
+				}
+			}
+			/////////////////////////////////////
+			/////////////////////////////////////
+
+
+		
 			if (buffer.charAt(j) == '{') { //se o fim de comando foi o "{", então são quatro possibilidades, while, if, função ou erro
-				for (l = 0; buffer.charAt(l) != ' ' && buffer.charAt(l) != '\n'; l++); //aqui eliminamos os primeiros espaços ou \n (sintaxe flexivel)
+				for (l = 0; buffer.charAt(l) != ' ' && buffer.charAt(l) != '\t' && buffer.charAt(l) != '\n'; l++); //aqui eliminamos os primeiros espaços, TAB ou \n (sintaxe flexivel)
 				h = 0;
 				while (buffer.charAt(l) != ' ' && buffer.charAt(l) != '{' && buffer.charAt(l) != '(') { //por ser sintaxe flexivel, os parenteses podem estar colados no comando
 					instruct = instruct + buffer.charAt(l); //aqui alimentamos a instrução (while, função, if ou erro)
@@ -48,13 +91,14 @@ class Escopo {
 					while (buffer.charAt(l) != '(') { //se o ponteiro não tiver no parenteses, vamos deixar lá
 						if (buffer.charAt(l) == '{') { //se após a instrução tem uma chave ao inves de um parentes, erro, tem q ter parenteses
 							//ABORTAR PROGRAMA
+							throw new IllegalArgumentException("Esperado perêntese direito após expressão");
 						}
 						l++;
 					}
 					blocos = 1;
 					novobloco  = new String();
 					while (blocos > 0) {
-						for (h = 0; 
+						//for (h = 0; 
 						
 						
 					}
