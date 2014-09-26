@@ -54,7 +54,7 @@ class Escopo {
 					blocos = 1;
 					novobloco  = new String();
 					while (blocos > 0) {
-						//for (h = 0; 
+						for (h = 0; 
 						
 						
 					}
