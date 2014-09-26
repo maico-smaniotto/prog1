@@ -27,7 +27,7 @@ class Escopo {
 		buffer = new String();
 		instruct = new String();
 	
-		for (i = 0; i < this.comandos.length; i++) {
+		for (i = 0; i < this.comandos.length(); i++) {
 			j = 0;
 			buffer = buffer + comandos.charAt(i+j);
 			while (FimComando(buffer.charAt(j)))  { //aqui alimentamos o buffer até achar um fim de comando
@@ -35,11 +35,11 @@ class Escopo {
 				buffer = buffer + comandos.charAt(i+j);
 			}
 			
-			if (buffer.charAt(j) == "{") { //se o fim de comando foi o "{", então são quatro possibilidades, while, if, função ou erro
+			if (buffer.charAt(j) == '{') { //se o fim de comando foi o "{", então são quatro possibilidades, while, if, função ou erro
 				for (l = 0; buffer.charAt(l) != ' ' && buffer.charAt(l) != '\n'; l++); //aqui eliminamos os primeiros espaços ou \n (sintaxe flexivel)
 				h = 0;
 				while (buffer.charAt(l) != ' ' && buffer.charAt(l) != '{' && buffer.charAt(l) != '(') { //por ser sintaxe flexivel, os parenteses podem estar colados no comando
-					instruct = insntruct + buffer.charAt(l); //aqui alimentamos a instrução (while, função, if ou erro)
+					instruct = instruct + buffer.charAt(l); //aqui alimentamos a instrução (while, função, if ou erro)
 					h++;
 					l++;				
 				}
@@ -53,8 +53,8 @@ class Escopo {
 					}
 					blocos = 1;
 					novobloco  = new String();
-					while (bloco > 0) {
-						for (h = 0; 
+					while (blocos > 0) {
+						//for (h = 0; 
 						
 						
 					}
