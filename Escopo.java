@@ -9,6 +9,10 @@ class Escopo {
 		return (c != ';' || c != '{');
 	}
 	
+	public boolean existeVariavel(String nome) {
+		// verifica se já existe uma variável no escopo com o nome informado
+	}
+	
 	public Escopo(String comandos, ArrayList<Variavel> variaveis) {
 		this.comandos = comandos;
 		
