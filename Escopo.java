@@ -3,7 +3,7 @@ import java.util.*;
 class Escopo {
 	private String[] comandos, buffer, instruct;
 	private ArrayList<Variavel> vars;
-	private int i, j, h, blocos=0;
+	private int i, j, h, l, blocos;
 	
 	private boolean FimComando (char c) {
 		return (c != ';'  || c != '{') {
@@ -32,14 +32,27 @@ class Escopo {
 			}
 			
 			if (buffer[j] == "{") { //se o fim de comando foi o "{", então são quatro possibilidades, while, if, função ou erro
-				for (j = 0; buffer[j] != ' ' && buffer[j] != '\n'; j++); //aqui eliminamos os primeiros espaços ou \n (sintaxe flexivel)
+				for (l = 0; buffer[l] != ' ' && buffer[l] != '\n'; l++); //aqui eliminamos os primeiros espaços ou \n (sintaxe flexivel)
 				h = 0;
-				while (buffer[j] != ' ' && buffer[j] != '{' && buffer[j] != '(') { //por ser sintaxe flexivel, os parenteses podem estar colados no comando, assim como a chave
-					instruct[h] = buffer[j]; //aqui alimentamos a instrução (while, função, if ou erro)
+				while (buffer[l] != ' ' && buffer[l] != '{' && buffer[l] != '(') { //por ser sintaxe flexivel, os parenteses podem estar colados no comando
+					instruct[h] = buffer[l]; //aqui alimentamos a instrução (while, função, if ou erro)
 					h++;
-					j++;
+					l++;				
+				}
+				blocos = 1;
+				if (instruct.equals(while)) { //se for um while, vamos descobrir a condição e armazenar numa string
+					while (buffer[l] != '(') { //se o ponteiro não tiver no parenteses, vamos deixar lá
+						if (buffer[l] == '{') { //se após a instrução tem uma chave ao invez de um parentes, erro, tem q ter parenteses
+							ABORTAR PROGRAMA
+						}
+						l++;
+					}
+					while (bloco > 0) {
+						
+						
+					}
 				
-				
+					
 				}
 				
 			}
