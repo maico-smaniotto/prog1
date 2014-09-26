@@ -39,14 +39,15 @@ class Escopo {
 					h++;
 					l++;				
 				}
-				blocos = 1;
+				
 				if (instruct.equals(while)) { //se for um while, vamos descobrir a condição e armazenar numa string
 					while (buffer[l] != '(') { //se o ponteiro não tiver no parenteses, vamos deixar lá
-						if (buffer[l] == '{') { //se após a instrução tem uma chave ao invez de um parentes, erro, tem q ter parenteses
+						if (buffer[l] == '{') { //se após a instrução tem uma chave ao inves de um parentes, erro, tem q ter parenteses
 							ABORTAR PROGRAMA
 						}
 						l++;
 					}
+					blocos = 1;
 					while (bloco > 0) {
 						
 						
