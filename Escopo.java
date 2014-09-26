@@ -6,28 +6,31 @@ class Escopo {
 	private int i, j, h, l, blocos;
 	
 	private boolean FimComando (char c) {
-		return (c != ';'  || c != '{') {
+		return (c != ';'  || c != '{');
 	}
 	
-	private boolean AvaliaCondi (String c) {
+	private boolean AvaliaCondicao(String c) {
 	
 	}
 	
 	public Escopo(String[] comandos, ArrayList<Variavel> variaveis) {
 		this.comandos = comandos;
 		buffer = new String[1000];
-		instruct = new String [50];
+		instruct = new String[50];
 		
 		this.vars = new ArrayList<Variavel>(); // Funciona como um array, mas tem método add() para adicionar itens
 		for (int i = 0; i < variaveis.size(); i++) {
 			this.vars.add(variaveis.get(i));
 		}
-		
-		for (i = 0; i < comandos.lenght; i++) {
+		processa(); // ver se não é melhor chamar este método de fora
+	}
+	
+	public void processa() {
+		for (i = 0; i < this.comandos.length; i++) {
 			j = 0;
 			buffer[j] = comandos[i+j];
 			while (FimComando(buffer[j]))  { //aqui alimentamos o buffer até achar um fim de comando
-				j++
+				j++;
 				buffer[j] = comandos[i+j];			
 			}
 			
@@ -40,10 +43,10 @@ class Escopo {
 					l++;				
 				}
 				
-				if (instruct.equals(while)) { //se for um while, vamos descobrir a condição e armazenar numa string
+				if (instruct.equals("while")) { //se for um while, vamos descobrir a condição e armazenar numa string
 					while (buffer[l] != '(') { //se o ponteiro não tiver no parenteses, vamos deixar lá
 						if (buffer[l] == '{') { //se após a instrução tem uma chave ao inves de um parentes, erro, tem q ter parenteses
-							ABORTAR PROGRAMA
+							//ABORTAR PROGRAMA
 						}
 						l++;
 					}
@@ -59,11 +62,6 @@ class Escopo {
 			}
 		
 		
-		}
-		
-	}
-	
-	public void processa() {
-		
+		}		
 	}
 }
