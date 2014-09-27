@@ -13,4 +13,9 @@ class Real extends Variavel {
 		this.setTipo('R');
 		this.setNome(nome);
 	}
+	
+	public Real(String nome, double valor) {
+		this(nome);
+		this.valor = valor;
+	}	
 }

@@ -13,4 +13,9 @@ class Inteiro extends Variavel {
 		this.setTipo('I');
 		this.setNome(nome);
 	}
+	
+	public Inteiro(String nome, int valor) {
+		this(nome);
+		this.valor = valor;
+	}
 }
